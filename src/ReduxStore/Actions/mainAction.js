@@ -4,7 +4,7 @@ import {toast} from 'react-toastify';
 export default function AddProducts(dispatch , updatefilte){
 
     async function getData(){
-        const res = await fetch('http://localhost:3004/product');
+        const res = await fetch('https://clean-jersey-seal.cyclic.app/product');
         const data = await res.json();
 
         let temp = data.map((elem)=>{
@@ -17,6 +17,14 @@ export default function AddProducts(dispatch , updatefilte){
         })
     }
     getData()
+}
+
+export const Logout = (dispatch)=>{
+     dispatch({
+        type : "SetLogin",
+        payload : false
+     })
+     makeZero(dispatch);
 }
 
 
@@ -38,8 +46,8 @@ function setSortingOrder(curr , dispatch){
 
 function addToCart(data , dispatch , id){
 const actual = {...data , cartStatus:true};
-// https://odd-pleat-cod.cyclic.app/products/${id}
-    fetch(`http://localhost:3004/product/${id}`,{
+
+    fetch(`https://clean-jersey-seal.cyclic.app/product/${id}`,{
         method:'PATCH',
         headers:{
             "Content-Type": "application/json"
@@ -56,7 +64,7 @@ const actual = {...data , cartStatus:true};
 
 function quantityZero(data ,dispatch , id){
 
-        fetch(`http://localhost:3004/product/${id}`,{
+        fetch(`https://clean-jersey-seal.cyclic.app/product/${id}`,{
         method:'PATCH',
         headers:{
             "Content-Type": "application/json"
@@ -77,7 +85,7 @@ function quantityZero(data ,dispatch , id){
 }
 
 function SetLogin(dispatch , logindata,navigate){
-    fetch("http://localhost:3004/login",{
+    fetch("https://clean-jersey-seal.cyclic.app/login",{
         method : "POST",
         headers : {
             "Content-Type" : "application/json"
@@ -91,6 +99,10 @@ function SetLogin(dispatch , logindata,navigate){
                 type:"SetLogin",
                 payload:true,
             })
+            dispatch({
+                type:"SetUser",
+                payload:data.data,
+            })
             toast.success('Login Success', {
                 position: "top-center",
                 autoClose: 5000,
@@ -103,7 +115,7 @@ function SetLogin(dispatch , logindata,navigate){
                 });
                 setTimeout(()=>{
                     navigate('/')
-                },2000)
+                },1000)
         }
         else{
             toast.error('Register To login', {
@@ -121,7 +133,7 @@ function SetLogin(dispatch , logindata,navigate){
 }
 
 export const Registration = (data)=>{
-   return fetch("http://localhost:3004/signup",{
+   return fetch("https://clean-jersey-seal.cyclic.app/signup",{
         method : "POST",
         headers : {
           "Content-Type" : "application/json"
@@ -186,5 +198,4 @@ export function makeZero(dispatch){
 
 export {setActiveCategory , setSortingOrder , addToCart , quantityZero , SetLogin};
 
-
-// http://localhost:3004/trending
+// https://odd-pleat-cod.cyclic.app/products/${id}

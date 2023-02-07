@@ -3,7 +3,8 @@ var initialData = {
     activeCat:"All Products",
     sortingOrder:"sbp",
     cart:[],
-    loginStatus:false
+    loginStatus:false,
+    user:{}
 }
 
 
@@ -33,6 +34,12 @@ export default function ProductReducer(data = initialData , action){
             return {
                 ...data,
                 cart:[...data.cart , action.payload]
+            }
+
+            case "SetUser":
+            return {
+                ...data,
+                user:action.payload
             }
 
         case "DELETE":

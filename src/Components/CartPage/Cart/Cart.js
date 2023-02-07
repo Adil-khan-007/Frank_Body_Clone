@@ -68,7 +68,6 @@ export const Cart = ()=>{
             setTotalPrice((prev)=>prev-200);
         }
         setCoupon(true);
-
        
     }
 
@@ -103,19 +102,19 @@ export const Cart = ()=>{
                     cartData.map((el,index)=>{
                         return <div className = "cartEle" key={index+1}>
                             <div style={{display:"flex",flexDirection:"row",width:"500px",marginRight:"5px"}}>
-                                <img src={el.url_1} width="100px" height="80px" alt={el.prod_title}/>
+                                <img src={el.url_1} width="100px" height="100px" alt={el.prod_title}/>
                             <div>
                                 <p className="ptag">{el.prod_name}</p> <br />
                                 <p className="sty">&nbsp;&nbsp;In stock</p>
                                 </div>
                                 </div>
-                            <p>₹{el.best_price}</p>
+                            <p style={{marginTop:"20px"}}>₹{el.best_price}</p>
                             <div style={{display:"flex",flexDirection:"row",gap:"10px"}}>
                                 <button className="dec" disabled = {el.quantity === 1 ? true : false} onClick={()=>decreaseCount(index)}>-</button>
                                 <p className="quant">{el.quantity}</p>
                                 <button className="inc" disabled = {el.quantity === 10 ? true : false} onClick={()=>increaseCount(index)}>+</button>
                             </div>
-                            <p>₹{Math.round(el.best_price*el.quantity * 100) / 100}</p>
+                            <p style={{marginTop:"20px"}}>₹{Math.round(el.best_price*el.quantity * 100) / 100}</p>
                             <img src="https://th.bing.com/th/id/R.f6883ee1ce2e0e3755a1892da2fe7e3c?rik=ozgkFfeviLMaDg&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_265949.png&ehk=gPghjaahwRbD4GGEcjuhCM8HJhQYy%2b2YzE5lGs5PvMo%3d&risl=&pid=ImgRaw&r=0" width="20px" height="20px" style={{marginTop:"15px"}} alt="" onClick={()=>handleCart(index)}/>
                         </div>
                     })
@@ -138,7 +137,7 @@ export const Cart = ()=>{
         <div className="discount">
             <div className="discount-child">
                 <input type="text" placeholder="Got a discount code ? Enter it here" ref={discountRef}/>
-                <button onClick={discount}>Add</button>
+                <button onClick={discount} style={{height:"40px"}}>Add</button>
             </div>
         </div>
 
@@ -148,18 +147,18 @@ export const Cart = ()=>{
 
             {/* Link the continue Shopping button  */}
 
-            <button>CONTINUE SHOPPING</button>
+            <button className="botn">CONTINUE SHOPPING</button>
 
             <div className="foot-child">
 
                 {/* Link CHECKOUT SECURELY button  */}
 
-                <button onClick={handleCheckout}>CHECKOUT SECURELY NOW</button>
+                <button onClick={handleCheckout} style={{height:"150px"}}>CHECKOUT SECURELY NOW</button>
                 <div>
-                    <img src= "https://www.onlinecasinos.org.uk/images/CASINO/Banking/gpay.png" width="60px" height="30px" alt=""/>
-                    <img src= "https://th.bing.com/th/id/R.da6e94dd3c89f40db67c3876d27674dd?rik=aBIV9h1KtgQbLg&riu=http%3a%2f%2f2.bp.blogspot.com%2f-c-anBBTMiTw%2fTVfnxr6OGvI%2fAAAAAAAAJQ4%2f7fNAYeoff8o%2fs1600%2fpaypal_logo16.jpg&ehk=Fo%2fIl8nSvF8o5aqMGL3ejj7a9jWYwEZppOmB8y9TMl0%3d&risl=&pid=ImgRaw&r=0" width="60px" height="30px" alt=""/>
-                    <img src= "https://www.aboutwebsites.info/wp-content/uploads/2020/11/Paytm-Logo.jpg" width="60px" height="30px" alt=""/>
-                    <img src= "https://laudco.com/storage/case-studies/July2019/gyKfHOjRAPp7JiqiAT01.png" width="60px" height="30px" alt=""/>
+                    <img src= "https://www.onlinecasinos.org.uk/images/CASINO/Banking/gpay.png" width="50px" height="35px" alt=""/>
+                    <img src= "https://th.bing.com/th/id/R.da6e94dd3c89f40db67c3876d27674dd?rik=aBIV9h1KtgQbLg&riu=http%3a%2f%2f2.bp.blogspot.com%2f-c-anBBTMiTw%2fTVfnxr6OGvI%2fAAAAAAAAJQ4%2f7fNAYeoff8o%2fs1600%2fpaypal_logo16.jpg&ehk=Fo%2fIl8nSvF8o5aqMGL3ejj7a9jWYwEZppOmB8y9TMl0%3d&risl=&pid=ImgRaw&r=0" width="50px" height="35px" alt=""/>
+                    <img src= "https://www.aboutwebsites.info/wp-content/uploads/2020/11/Paytm-Logo.jpg" width="50px" height="35px" alt=""/>
+                    <img src= "https://laudco.com/storage/case-studies/July2019/gyKfHOjRAPp7JiqiAT01.png" width="50px" height="35px" alt=""/>
                 </div>
             </div>
         </div>

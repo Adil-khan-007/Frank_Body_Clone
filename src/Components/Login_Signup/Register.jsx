@@ -18,7 +18,6 @@ const intialregisterdata = {
     fname:"",
     lname:"",
   }
-  // const arr = JSON.parse(localStorage.getItem("RegisterItems")) || [];
 
 
 

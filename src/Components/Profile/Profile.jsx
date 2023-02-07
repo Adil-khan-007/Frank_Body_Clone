@@ -2,18 +2,18 @@ import React from 'react';
 import Navbar from '../LandingPage/TopSection/Navbar/Navbar';
 import './Profile.css'
 import avtar from './img/avtar.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTruck , faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import edit from './img/edit.png';
 import { useState } from 'react';
-function Profile() {
+import { useDispatch, useSelector } from 'react-redux';
+import { Logout } from '../../ReduxStore/Actions/mainAction';
 
-    // const data = ;
+function Profile() {
+    const user = useSelector((sd)=>sd.user);
+    const dispatch = useDispatch();
 
     const [data , setData] = useState(JSON.parse(localStorage.getItem("orderHistory")));
 
     function handleClickCancel(idx){
-        // data.splice(idx , 1)
 
         let temp = data.filter((elem , id)=>{
             return id != idx;
@@ -21,6 +21,10 @@ function Profile() {
 
         localStorage.setItem("orderHistory" , JSON.stringify(temp));
         setData(temp);
+    }
+
+    const handleClick = ()=>{
+        Logout(dispatch);
     }
 
 
@@ -42,19 +46,14 @@ function Profile() {
 
 
                             <div>
-                                <h3>Anshu Raj</h3>
-                                <p>fakereal477@gmail.com</p>
+                                <h3>{user.fname} {user.lname}</h3>
+                                <p>{user.email}</p>
                                 <p>+91 - 800******7</p>
                             </div>
 
 
                     </div>
                 </div>
-
-
-
-
-
                 <div className="profile_right">
 
                         <div>
@@ -71,6 +70,10 @@ function Profile() {
                             <img src="https://www.netmeds.com/msassets/images/icons/rewards.svg" alt="Not found" />
                             <h6>Rewards</h6>
                         </div>
+                        <div onClick={handleClick}>
+                            <img src="https://berkshirephotogathering.com/wp-content/plugins/bpg/images/logout.png" alt="Not found" />
+                            <h6>LogOut</h6>
+                        </div>
                 </div>
 
 
@@ -82,7 +85,7 @@ function Profile() {
 
                 <div className="prev_order_container">
                     {
-                        data.map((elem , idx)=>{
+                       data && data.map((elem , idx)=>{
                             return <>
                             <br />
                             <div className="orderItem">

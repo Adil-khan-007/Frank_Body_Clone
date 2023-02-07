@@ -9,9 +9,6 @@ import { useSelector } from 'react-redux';
 function Navbar() {
 
     const cartitem = useSelector((store) => store.cart);
-
-
-
     const navigate = useNavigate();
 
     function logoClick(){

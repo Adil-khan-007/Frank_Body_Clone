@@ -172,13 +172,13 @@
 }
 
 .foot{
-  padding: 20px;
+  padding: 12px 20px;
   display: flex;
   height: 110px;
   flex-direction: row;
   justify-content: space-between;
 }
-.foot > button{
+.botn{
   width: 19%;
   height: 44px;
   font-size: 17px;
@@ -197,7 +197,7 @@
 }
 .foot-child > button{
     width: 300px;
-    height: 46px;
+    height: 40px;
     border: none;
     padding: 8px 16px;
     background-color: #3f2a2d;
@@ -220,7 +220,7 @@
 .foot-child > div {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .foot-child > div > img{
   border: 1px solid #999;
