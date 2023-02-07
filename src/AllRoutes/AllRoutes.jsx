@@ -21,14 +21,12 @@ function AllRoutes() {
     const isLogin = useSelector((store) => store.loginStatus);
     const cartLen = useSelector((store) => store.cart.length);
 
-    console.log(cartLen);
+    // console.log(cartLen);
 
 
 
     return (
         <>
-
-
                     <Routes>
                         <Route path='/' element={<LandingPage />} />
                         <Route path='/shop' element={<ProductPage />} />

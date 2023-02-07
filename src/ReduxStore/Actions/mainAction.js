@@ -74,7 +74,6 @@ function quantityZero(data ,dispatch , id){
 }
 
 function SetLogin(dispatch , status){
-
     dispatch({
         type:"SetLogin",
         payload:status,
