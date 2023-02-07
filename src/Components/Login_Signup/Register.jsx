@@ -3,11 +3,13 @@ import Navbar from '../LandingPage/TopSection/Navbar/Navbar';
 import { Link  , Navigate} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
+import {toast as tt} from 'react-toastify';
 import {faGoogle , faFacebook} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ToastContainer, toast } from 'react-toastify';
-import {toast as tt} from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
+import { Registration } from '../../ReduxStore/Actions/mainAction';
 
 
 const intialregisterdata = {
@@ -32,31 +34,52 @@ function Register() {
   }
   
   const Registerationhandler = (e) => {
+    e.preventDefault();
 
-    fetch("http://localhost:3004/signup",{
-      method : "POST",
-      headers : {
-        "Content-Type" : "application/json"
-      },
-      body : JSON.stringify(registationdata)
+    const message  = Registration(registationdata);
+    message.then((res)=>{
+ if(res == "Registration Succesfully"){
+      tt.success('Successfully Registered', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    
+          setTimeout(()=>{
+            navigate('/login');
+          },1000)
+   }
+   else{
+      toast.warn('User Already Exists', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+   }
     })
+   
+
+
+    
+
   //   var count=0;
-  //   e.preventDefault();
+  //   
   //   if(arr.length>0)
   //   {
   //     arr.map((elem)=>{
   //       if(elem.email === registationdata.email)
   //       {
-  //         toast.warn('User Already Exists', {
-  //           position: "top-center",
-  //           autoClose: 5000,
-  //           hideProgressBar: false,
-  //           closeOnClick: true,
-  //           pauseOnHover: false,
-  //           draggable: true,
-  //           progress: undefined,
-  //           theme: "light",
-  //           });
+  //         
   //         setregistationdata(intialregisterdata);
   //         count++;
   //       }
@@ -69,20 +92,7 @@ function Register() {
   //   setregistationdata(intialregisterdata);
     
   //   // alert('Register Success');
-  //   tt.success('Successfully Registered', {
-  //     position: "top-center",
-  //     autoClose: 5000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: false,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: "light",
-  //     });
-
-      setTimeout(()=>{
-        navigate('/login');
-      },1000)
+    
     // }
     // count=0;
    

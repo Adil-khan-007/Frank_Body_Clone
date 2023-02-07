@@ -19,11 +19,6 @@ const logindatainital  = {
     email:"",
     password:"",
 }
-let localStoragearr = JSON.parse(localStorage.getItem('RegisterItems')) || [];
-
-
-
-
 
 function Login() {
 
@@ -39,81 +34,11 @@ function Login() {
       setlogindata({...logindata,[name]:value});
     }
 
-    const {email,password} = logindata;
-
-    // function handleLogin(){
-        
-
+        const {email,password} = logindata;
         const loginsubmitter = (e) => {
-
-            let localStoragearr2 = JSON.parse(localStorage.getItem('RegisterItems')) || [];
-
-
             e.preventDefault();
-            if(localStoragearr2.length>0)
-            {
-                localStoragearr2.map((elem)=>{
-                    if(elem.email === logindata.email && elem.password === logindata.password)
-                    {
-                        setloginstatus(true);
-                        // console.log(loginstatus);
-                        localStorage.setItem("Login_Status",true);
-                        SetLogin(dispatch , true);
-                        toast.success('Login Success', {
-                            position: "top-center",
-                            autoClose: 5000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: false,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "light",
-                            });
-                        setTimeout(()=>{
-                            navigate('/')
-                        },1000)
-                        
-                        // return <Navigate to="/register" />
-                    }
-                return 1;
-                })
-            }
-            else{
-                toast.error('Register To login', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
-              
-            }
+            SetLogin(dispatch,logindata);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     return (
         <>

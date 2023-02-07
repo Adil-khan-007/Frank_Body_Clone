@@ -1,3 +1,6 @@
+import {toast} from 'react-toastify';
+
+
 export default function AddProducts(dispatch , updatefilte){
 
     async function getData(){
@@ -73,11 +76,62 @@ function quantityZero(data ,dispatch , id){
     })
 }
 
-function SetLogin(dispatch , status){
-    dispatch({
-        type:"SetLogin",
-        payload:status,
+function SetLogin(dispatch , logindata){
+    fetch("http://localhost:3004/login",{
+        method : "POST",
+        headers : {
+            "Content-Type" : "application/json"
+        },
+        body : JSON.stringify(logindata)
+    }).then((res)=>res.json())
+    .then((data)=>{
+        if(data.token){
+            localStorage.setItem("userToken",JSON.stringify(data.token));
+            dispatch({
+                type:"SetLogin",
+                payload:true,
+            })
+            toast.success('Login Success', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+                setTimeout(()=>{
+                    navigate('/')
+                },1000)
+        }
+        else{
+            toast.error('Register To login', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        }
     })
+}
+
+export const Registration = (data)=>{
+   return fetch("http://localhost:3004/signup",{
+        method : "POST",
+        headers : {
+          "Content-Type" : "application/json"
+        },
+        body : JSON.stringify(data)
+      })
+      .then((res)=>res.json())
+      .then((data)=>{
+         return data.message;
+      })
 }
 
 export const DeleteFromCart = (data,index,dispatch)=>{
@@ -89,7 +143,7 @@ export const DeleteFromCart = (data,index,dispatch)=>{
         payload : NewArr,
     })
  }
- 
+
 
  export const AddQuantityKey = (data,dispatch)=>{
    const temp = data.map((elem)=>{
