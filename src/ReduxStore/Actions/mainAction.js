@@ -89,6 +89,7 @@ export const DeleteFromCart = (data,index,dispatch)=>{
         payload : NewArr,
     })
  }
+ 
 
  export const AddQuantityKey = (data,dispatch)=>{
    const temp = data.map((elem)=>{

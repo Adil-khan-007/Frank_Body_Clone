@@ -16,79 +16,77 @@ const intialregisterdata = {
     fname:"",
     lname:"",
   }
-  const arr = JSON.parse(localStorage.getItem("RegisterItems")) || [];
+  // const arr = JSON.parse(localStorage.getItem("RegisterItems")) || [];
 
 
 
 function Register() {
 
     const navigate = useNavigate();
-  
-
     const [registationdata,setregistationdata] = useState(intialregisterdata);
-  
-    
    const {email, password, fname, lname} = registationdata;
   
-  const Handlechange = (e) => {
+    const Handlechange = (e) => {
     const{name,value} = e.target;
     setregistationdata({...registationdata,[name]:value})
   }
   
   const Registerationhandler = (e) => {
-    var count=0;
-    e.preventDefault();
-    if(arr.length>0)
-    {
-      arr.map((elem)=>{
-        if(elem.email === registationdata.email)
-        {
-          toast.warn('User Already Exists', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            });
-          setregistationdata(intialregisterdata);
-          count++;
-        }
-       return 1;
-      })
-    }
-    if(count===0){
-   arr.push(registationdata);
-    localStorage.setItem("RegisterItems",JSON.stringify(arr));
-    setregistationdata(intialregisterdata);
+
+    fetch("http://localhost:3004/signup",{
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify(registationdata)
+    })
+  //   var count=0;
+  //   e.preventDefault();
+  //   if(arr.length>0)
+  //   {
+  //     arr.map((elem)=>{
+  //       if(elem.email === registationdata.email)
+  //       {
+  //         toast.warn('User Already Exists', {
+  //           position: "top-center",
+  //           autoClose: 5000,
+  //           hideProgressBar: false,
+  //           closeOnClick: true,
+  //           pauseOnHover: false,
+  //           draggable: true,
+  //           progress: undefined,
+  //           theme: "light",
+  //           });
+  //         setregistationdata(intialregisterdata);
+  //         count++;
+  //       }
+  //      return 1;
+  //     })
+  //   }
+  //   if(count===0){
+  //  arr.push(registationdata);
+  //   localStorage.setItem("RegisterItems",JSON.stringify(arr));
+  //   setregistationdata(intialregisterdata);
     
-    // alert('Register Success');
-    tt.success('Successfully Registered', {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      });
+  //   // alert('Register Success');
+  //   tt.success('Successfully Registered', {
+  //     position: "top-center",
+  //     autoClose: 5000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: false,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "light",
+  //     });
 
       setTimeout(()=>{
         navigate('/login');
       },1000)
-    }
-    count=0;
+    // }
+    // count=0;
    
   }
-
-
-
-
-
-
 
     return (
         <>

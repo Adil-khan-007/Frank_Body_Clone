@@ -28,11 +28,6 @@ let localStoragearr = JSON.parse(localStorage.getItem('RegisterItems')) || [];
 function Login() {
 
     const dispatch = useDispatch();
-
-
-
-
-
     const navigate = useNavigate();
   
     const [logindata,setlogindata] = useState(logindatainital);
