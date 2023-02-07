@@ -11,7 +11,7 @@ function OfferBanner() {
   const [data,setData] = useState([]);
 
   useEffect(()=>{
-     fetch("http://localhost:3004/trending").then((res)=>res.json())
+     fetch("https://clean-jersey-seal.cyclic.app/trending").then((res)=>res.json())
      .then((data)=>setData(data))
   })
 

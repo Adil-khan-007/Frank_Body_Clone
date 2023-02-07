@@ -4,7 +4,7 @@ function PopularCategorySection() {
     const [data,setData] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:3004/popular").then((res)=>res.json())
+        fetch("https://clean-jersey-seal.cyclic.app/popular").then((res)=>res.json())
         .then((data)=>setData(data))
      })
 
