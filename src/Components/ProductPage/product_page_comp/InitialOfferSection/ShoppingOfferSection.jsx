@@ -15,9 +15,6 @@ function ShoppingOfferSection() {
                 </div>
             </div>
 
-
-
-
             <div>
 
                 <div>

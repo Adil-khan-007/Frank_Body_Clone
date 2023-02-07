@@ -1,34 +1,23 @@
 export default function AddProducts(dispatch , updatefilte){
 
     async function getData(){
-        // const res = await fetch('https://frankbodyapi.herokuapp.com/products');
-        const res = await fetch('https://odd-pleat-cod.cyclic.app/products');
+        const res = await fetch('http://localhost:3004/product');
         const data = await res.json();
 
         let temp = data.map((elem)=>{
-
             return {...elem}
-
         })
-
         updatefilte(temp)
-        
         dispatch({
             type:"ADDDATA",
             payload:temp
-    
         })
     }
-   
     getData()
-
-    
-
 }
 
 
 function setActiveCategory(curr , dispatch){
-
     dispatch({
         type:"SETCAT",
         payload : curr
@@ -45,14 +34,9 @@ function setSortingOrder(curr , dispatch){
 
 
 function addToCart(data , dispatch , id){
-
 const actual = {...data , cartStatus:true};
-
-// fetch(`https://frankbodyapi.herokuapp.com/products/${id}`,{
-
-    fetch(`https://odd-pleat-cod.cyclic.app/products/${id}`,{
-
-
+// https://odd-pleat-cod.cyclic.app/products/${id}
+    fetch(`http://localhost:3004/product/${id}`,{
         method:'PATCH',
         headers:{
             "Content-Type": "application/json"
@@ -61,8 +45,6 @@ const actual = {...data , cartStatus:true};
             "cartStatus" : true
         })
     })
-
-
     dispatch({
         type:"ADD",
         payload:actual
@@ -71,9 +53,7 @@ const actual = {...data , cartStatus:true};
 
 function quantityZero(data ,dispatch , id){
 
-    // fetch(`https://frankbodyapi.herokuapp.com/products/${id}`,{
-
-        fetch(`https://odd-pleat-cod.cyclic.app/products/${id}`,{
+        fetch(`http://localhost:3004/product/${id}`,{
         method:'PATCH',
         headers:{
             "Content-Type": "application/json"
@@ -91,7 +71,6 @@ function quantityZero(data ,dispatch , id){
         type:"DELETE",
         payload:newarr
     })
-
 }
 
 function SetLogin(dispatch , status){
@@ -152,3 +131,6 @@ export function makeZero(dispatch){
 }
 
 export {setActiveCategory , setSortingOrder , addToCart , quantityZero , SetLogin};
+
+
+// http://localhost:3004/trending

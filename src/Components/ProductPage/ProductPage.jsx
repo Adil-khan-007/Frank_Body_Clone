@@ -9,11 +9,7 @@ import Maximise from '../LandingPage/MiddleSection/Maximise';
 import OfferBanner from './product_page_comp/OfferBanner';
 import PopularCategorySection from './product_page_comp/PopularCategorySection';
 function ProductPage() {
-    return (
-        <>
-
-    
-
+    return ( <>
     <m.div initial={{opacity:0}}
             animate={{opacity:1}}
             // transition={{duration:0.35 , ease: "easeOut"}}
@@ -28,12 +24,11 @@ function ProductPage() {
 
             <OfferBanner />
 
+            <PopularCategorySection />
 
-<PopularCategorySection />
-                <ShoppingOfferSection />
+            <ShoppingOfferSection />
 
-
-                <Footer />
+            <Footer />
             
     </m.div>
                         

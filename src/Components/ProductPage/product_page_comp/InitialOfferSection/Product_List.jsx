@@ -11,13 +11,8 @@ function Product_List() {
 
     const currActiveCat = useSelector((data) => data.activeCat);
 
-    const sortingOrd = useSelector((data) => data.sortingOrder);
+    const sortingOrd = useSelector((data) => data.sortingOrder);   
     
-    console.log(currActiveCat);
-
-    
-
-
     const [currpage , setPage] = useState(1);
 
     const [filtered , setFiltered] = useState([]);
@@ -116,41 +111,19 @@ function Product_List() {
                         
                 </div>
             <m.div className="productList_outer" 
-            
-            layout
-
-            // transition={{duration:0.35 , ease: "easeOut"}}
-            
-            >
-
-
-                {/* {console.log(catfilter)}; */}
+            layout>
                 <AnimatePresence>
             {
                 
 
                 catfilter.length > 0 &&  catfilter.map((elem , idx)=>{
-                                return <> 
-                                
-                    
-
+                return <>
                    {
                     currActiveCat != "All Products" ? <Card key={idx+22} data ={elem}/> : <> {idx >=(currpage*10) && idx<((currpage+1)*10) ? <Card key={idx+22} data = {elem}/> : null} </>
-                   }
-                
-
-
-                                
+                   }      
                                 </>
                             })
-            }</AnimatePresence>
-            
-                       {/*  {
-
-                       
-
-                        }</AnimatePresence> */}
-                        
+            }</AnimatePresence>      
                         
             </m.div>
         </>

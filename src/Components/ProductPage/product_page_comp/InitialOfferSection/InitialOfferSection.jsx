@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import '../../shop.css'
-import heading from '../../../LandingPage/TopSection/img/checking.png';
+// import heading from '../../../LandingPage/TopSection/img/checking.png';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import img1 from '../../sliderImg/slider1.avif';
-import img2 from '../../sliderImg/slider2.avif';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import {setActiveCategory , setSortingOrder} from '../../../../ReduxStore/Actions/mainAction';
@@ -41,8 +39,8 @@ function InitialOfferSection() {
 
                 <div className="slider_Section_shop">
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-                <SwiperSlide><img src={img2} alt="Not Found" /></SwiperSlide>
-        <SwiperSlide><img src={img1} alt="Not Found" /></SwiperSlide>
+                <SwiperSlide><img src="https://hudabeauty.com/on/demandware.static/-/Sites/default/dwba8a6fee/d-PLP-makeup.jpg" alt="Not Found" /></SwiperSlide>
+                <SwiperSlide><img src="https://hudabeauty.com/on/demandware.static/-/Sites/default/dw6eddb5bd/d-PLP-bestseller.jpg" alt="Not Found"/></SwiperSlide>
       </Swiper>
 
                 </div>
