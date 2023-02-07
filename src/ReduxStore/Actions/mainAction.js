@@ -76,7 +76,7 @@ function quantityZero(data ,dispatch , id){
     })
 }
 
-function SetLogin(dispatch , logindata){
+function SetLogin(dispatch , logindata,navigate){
     fetch("http://localhost:3004/login",{
         method : "POST",
         headers : {
@@ -103,7 +103,7 @@ function SetLogin(dispatch , logindata){
                 });
                 setTimeout(()=>{
                     navigate('/')
-                },1000)
+                },2000)
         }
         else{
             toast.error('Register To login', {

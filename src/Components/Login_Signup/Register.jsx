@@ -52,7 +52,7 @@ function Register() {
     
           setTimeout(()=>{
             navigate('/login');
-          },1000)
+          },2000)
    }
    else{
       toast.warn('User Already Exists', {
@@ -67,35 +67,6 @@ function Register() {
           });
    }
     })
-   
-
-
-    
-
-  //   var count=0;
-  //   
-  //   if(arr.length>0)
-  //   {
-  //     arr.map((elem)=>{
-  //       if(elem.email === registationdata.email)
-  //       {
-  //         
-  //         setregistationdata(intialregisterdata);
-  //         count++;
-  //       }
-  //      return 1;
-  //     })
-  //   }
-  //   if(count===0){
-  //  arr.push(registationdata);
-  //   localStorage.setItem("RegisterItems",JSON.stringify(arr));
-  //   setregistationdata(intialregisterdata);
-    
-  //   // alert('Register Success');
-    
-    // }
-    // count=0;
-   
   }
 
     return (
@@ -122,10 +93,9 @@ function Register() {
 
             <ToastContainer  style={{zIndex:100000}}/>
             <span className='maysend'>You'll be sent an email with instructions to activate your account</span>
-            <input  type="submit" value="REGISTER"/>
+            <input  type="submit" value="REGISTER" style={{margin : "1px 0"}}/>
         </form>
         <div className='registerlinks'>
-            {/* <Link  className='registerlinksdata firstlink'>Forgot your password? </Link> */}
             <Link className='registerlinksdata firstlink' to="/login">Have an account? Login</Link>
         </div>
     </div>

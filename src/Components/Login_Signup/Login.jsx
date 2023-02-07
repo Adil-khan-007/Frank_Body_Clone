@@ -6,13 +6,10 @@ import './Login.css'
 import {faGoogle , faFacebook} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
-import {SetLogin} from '../../ReduxStore/Actions/mainAction';
- 
+import {SetLogin} from '../../ReduxStore/Actions/mainAction'; 
 import { ToastContainer, toast } from 'react-toastify';
 import {toast as tt} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 
 
 const logindatainital  = {
@@ -37,7 +34,7 @@ function Login() {
         const {email,password} = logindata;
         const loginsubmitter = (e) => {
             e.preventDefault();
-            SetLogin(dispatch,logindata);
+            SetLogin(dispatch,logindata,navigate);
         }
 
     return (
@@ -73,14 +70,14 @@ function Login() {
         </div>
 
     </div>
-
+{/* 
     <div className="login_with_container">
 
         <div className="login_btns">
             <button><FontAwesomeIcon className='google' icon={faGoogle}/> &nbsp;&nbsp;&nbsp;&nbsp;Google</button>
             <button><FontAwesomeIcon className='facebook' icon={faFacebook} />&nbsp;&nbsp;&nbsp;&nbsp;Facebook</button>
         </div>
-    </div>
+    </div> */}
 
     <ToastContainer  style={{zIndex:100000000}}/>
 
